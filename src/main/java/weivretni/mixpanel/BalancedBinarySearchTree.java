@@ -12,7 +12,7 @@ import weivretni.TreeNode;
  * 
  */
 public class BalancedBinarySearchTree {
-
+  
     private ListNode findMiddle(ListNode head) {
         if (head.next == null) {
             return head;
