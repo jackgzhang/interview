@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static weivretni.Tesstt.i;
+
 
 class Tesstt {
     static int i = 0;
@@ -21,13 +23,6 @@ class Tesstt {
 
 public class BaseTest {
 
-    
-    public static void main(String[] args) {
-        Tesstt t = new Tesstt();
-        System.out.println(t.test());
-        System.out.println(Tesstt.i);
-    }
-    
     protected void assertEquals(String[] source, String[] target) {
 
         StringBuffer sb1 = new StringBuffer();
@@ -91,21 +86,23 @@ public class BaseTest {
 
     }
 
-
-    protected void assertEquals(List<Integer> source, List<Integer> target) {
-
-        StringBuffer sb1 = new StringBuffer();
-        for (int i : source) {
-            sb1.append(i).append(",");
+    private <T> String nicePrintListRecursively(List<T> list) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (list!= null && list.size() > 0) {
+            for (T t : list) {
+                if (t instanceof List) {
+                    stringBuilder.append("[").append(nicePrintListRecursively((List)t)).append("],");
+                } else {
+                    stringBuilder.append(i).append(",");
+                }
+            }
         }
+        return stringBuilder.toString();
+    }
 
-        StringBuffer sb2 = new StringBuffer();
-        for (int i : target) {
-            sb2.append(i).append(",");
-        }
-
-        Assert.assertEquals(sb1.toString().intern(), sb2.toString().intern());
-
+    protected <T> void assertEquals(List<T> source, List<T> target) {
+        Assert.assertEquals(source.size(), target.size());
+        Assert.assertEquals(nicePrintListRecursively(source).intern(), nicePrintListRecursively(target).intern());
     }
 
     protected void assertEquals(int[] source, List<Integer> target) {

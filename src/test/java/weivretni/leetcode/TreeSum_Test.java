@@ -4,7 +4,6 @@ import org.junit.Test;
 
 public class TreeSum_Test {
 
-    private Q015_ThreeSum source = new Q015_ThreeSum();
 
     @Test
     public void test() {
