@@ -1,4 +1,4 @@
-//package weivretni.leetcode;
+package weivretni.leetcode;//package weivretni.leetcode;
 //
 //public class ValidSudoku {
 //

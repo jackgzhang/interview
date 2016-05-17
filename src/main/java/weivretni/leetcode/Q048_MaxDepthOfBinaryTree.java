@@ -11,18 +11,12 @@ import weivretni.TreeNode;
  */
 public class Q048_MaxDepthOfBinaryTree {
 
-    public int helper(TreeNode root, int depth) {
-        if (root == null) {
-            return depth;
-        }
-
-        int left = helper(root.left, depth) + 1;
-        int right = helper(root.right, depth) + 1;
-
-        return Math.max(left, right);
-    }
-
     public int maxDepth(TreeNode root) {
-        return helper(root, 0);
+        if (root == null) {
+            return 0;
+        } else {
+            return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+        }
     }
+
 }

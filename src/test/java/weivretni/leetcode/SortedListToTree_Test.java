@@ -1,7 +1,6 @@
 package weivretni.leetcode;
 
 import org.junit.Test;
-
 import weivretni.ListNode;
 import weivretni.TreeNode;
 

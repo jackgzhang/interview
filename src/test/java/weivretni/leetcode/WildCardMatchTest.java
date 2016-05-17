@@ -1,7 +1,6 @@
 package weivretni.leetcode;
 
 import junit.framework.Assert;
-
 import org.junit.Test;
 
 public class WildCardMatchTest {

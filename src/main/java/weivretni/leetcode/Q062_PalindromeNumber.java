@@ -1,5 +1,12 @@
 package weivretni.leetcode;
 
+/**
+ * Determine whether an integer is a palindrome. Do this without extra space.
+ * 
+ * 
+ * @author gzhang
+ *
+ */
 public class Q062_PalindromeNumber {
 
     public boolean isPalindrome(int x) {
