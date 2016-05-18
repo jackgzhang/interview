@@ -31,7 +31,7 @@ import java.util.List;
  *      遍历位置为O(n)，移动左右点累积移动也是O(n)，所以时间复杂度为O(n^2)
  *      总的时间复杂度为O(nlgn) + O(n^2)=O(n^2)
  *
- *      注意 line 84, 找到后要move left 指针 (或move right 指针)
+ *      注意 line 88, 找到后要move left 指针 (或move right 指针)
  *
  * </pre>
  *
