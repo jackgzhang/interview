@@ -9,30 +9,15 @@ public class Q005_LongestPalindromicSubstring_Test {
 
     @Test
     public void test() {
-        Assert.assertEquals("aba", source.longestPalindrome("aaba"));
-        Assert.assertEquals("aa", source.longestPalindrome("aa"));
-        Assert.assertEquals("abba", source.longestPalindrome("aabba"));
-        Assert.assertEquals("x1x", source.longestPalindrome("x1x"));
-        Assert.assertEquals("aaaaa", source.longestPalindrome("aaaaa"));
-        Assert.assertEquals("aa", source.longestPalindrome("aa"));
-        Assert.assertEquals("a", source.longestPalindrome("a"));
-        Assert.assertEquals("aba", source.longestPalindrome("aba"));
-        Assert.assertEquals("aba", source.longestPalindrome("caba"));
-        Assert.assertEquals("aaaaaaaaaaaaaaaaaaaa", source.longestPalindrome("aaaaaaaaaaaaaaaaaaaa"));
-    }
-
-    @Test
-    public void test2() {
-        Assert.assertEquals("aba", source.longestPalindrome2("aaba"));
-        Assert.assertEquals("aa", source.longestPalindrome2("aa"));
-        Assert.assertEquals("abba", source.longestPalindrome2("aabba"));
-        Assert.assertEquals("x1x", source.longestPalindrome2("x1x"));
-        Assert.assertEquals("aaaaa", source.longestPalindrome2("aaaaa"));
-        Assert.assertEquals("aa", source.longestPalindrome2("aa"));
-        Assert.assertEquals("a", source.longestPalindrome2("a"));
-        Assert.assertEquals("aba", source.longestPalindrome2("aba"));
-        Assert.assertEquals("aba", source.longestPalindrome2("caba"));
-        Assert.assertEquals("aaaaaaaaaaaaaaaaaaaa", source.longestPalindrome2("aaaaaaaaaaaaaaaaaaaa"));
-
+        Assert.assertEquals(source.longestPalindrome("aaba"), source.longestPalindrome2("aaba"));
+        Assert.assertEquals(source.longestPalindrome("aa"), source.longestPalindrome2("aa"));
+        Assert.assertEquals(source.longestPalindrome("aabba"), source.longestPalindrome2("aabba"));
+        Assert.assertEquals(source.longestPalindrome("x1x"), source.longestPalindrome2("x1x"));
+        Assert.assertEquals(source.longestPalindrome("aaaaa"), source.longestPalindrome2("aaaaa"));
+        Assert.assertEquals(source.longestPalindrome("aa"), source.longestPalindrome2("aa"));
+        Assert.assertEquals(source.longestPalindrome("a"), source.longestPalindrome2("a"));
+        Assert.assertEquals(source.longestPalindrome("aba"), source.longestPalindrome2("aba"));
+        Assert.assertEquals(source.longestPalindrome("caba"), source.longestPalindrome2("caba"));
+        Assert.assertEquals(source.longestPalindrome("aaaaaaaaaaaaaaaaaaaa"), source.longestPalindrome2("aaaaaaaaaaaaaaaaaaaa"));
     }
 }
