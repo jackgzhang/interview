@@ -15,10 +15,7 @@ import java.util.Arrays;
  * </pre>
  * 
  * <pre>
- * DP 解法 超时 O(n^3)
- * http://fisherlei.blogspot.com/2012/12/leetcode-longest-substring-without.html
- * 
- * 
+ *
  * 2个指针从左往右扫描，当遇到重复字母时，以上一个重复字母的index +1  ，作为新的搜索起始位置。比如
  * 
  *   index：      0 1 2 3 4 5 6 7 8 9  10 11 
@@ -48,26 +45,23 @@ import java.util.Arrays;
 public class Q003_LongestSubstringWithoutRepeatingCharacters {
 
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.length() == 0) {
-            return 0;
-        } else {
-            int i = 0;
-            int maxLength = 0;
+        int i = 0;
+        int maxLength = 0;
 
-            int[] position = new int[256];
-            Arrays.fill(position, -1);
-            for (int index = 0; index < s.length(); index++) {
+        int[] dp = new int[256];
+        Arrays.fill(dp, -1);
 
-                if (position[s.charAt(index)] >= i) {
-                    i = position[s.charAt(index)] + 1;
-                }
+        for (int index = 0; index < s.length(); index++) {
 
-                position[s.charAt(index)] = index;
-
-                maxLength = Math.max(maxLength, index - i + 1);
+            if (dp[s.charAt(index)] >= i) {  // 遇见重复
+                i = dp[s.charAt(index)] + 1; // reset i
             }
 
-            return maxLength;
+            dp[s.charAt(index)] = index;
+
+            maxLength = Math.max(maxLength, index - i + 1);
         }
+
+        return maxLength;
     }
 }
