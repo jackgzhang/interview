@@ -42,7 +42,7 @@ public class Q007_BalancedTree {
     // ======= 解法二 ======== //
     /**
      *  Bottom-up
-     *  O(n^2),  O(n) stack space
+     *  O(n),  O(n) stack space
      *
      *  The problem of 解法一 is, it re-travel the child to get
      *  the getHeight() and isBalanced(). We can merge these 2 calls to one.
