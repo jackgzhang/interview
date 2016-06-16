@@ -11,11 +11,11 @@ import static weivretni.Tesstt.i;
 
 class Tesstt {
     static int i = 0;
-    
+
     public int test() {
         try {
             return 1;
-        }finally{
+        } finally {
             return 2;
         }
     }
@@ -69,6 +69,21 @@ public class BaseTest {
         }
     }
 
+    protected void assertEquals(TreeNode node1, TreeNode node2) {
+        if (node1 == null && node2 == null) {
+        } else if (node1 == null) {
+            Assert.fail("length are different");
+        } else if (node2 == null) {
+            Assert.fail("length are different");
+        } else {
+            if (node1.val == node2.val) {
+                assertEquals(node1.left, node2.left);
+                assertEquals(node1.right, node2.right);
+            } else {
+                Assert.fail("value are different");
+            }
+        }
+    }
 
     protected void assertEquals(List<Integer> source, int[] target) {
 
@@ -88,10 +103,10 @@ public class BaseTest {
 
     private <T> String nicePrintListRecursively(List<T> list) {
         StringBuilder stringBuilder = new StringBuilder();
-        if (list!= null && list.size() > 0) {
+        if (list != null && list.size() > 0) {
             for (T t : list) {
                 if (t instanceof List) {
-                    stringBuilder.append("[").append(nicePrintListRecursively((List)t)).append("],");
+                    stringBuilder.append("[").append(nicePrintListRecursively((List) t)).append("],");
                 } else {
                     stringBuilder.append(i).append(",");
                 }
@@ -225,7 +240,7 @@ public class BaseTest {
          *         4     6
          *       2          7
          *      1              8
-         * 
+         *
          * </pre>
          */
         TreeNode n3 = new TreeNode(3);
@@ -266,42 +281,46 @@ public class BaseTest {
         }
     }
 
+    protected ListNode buildListNode(int[] num) {
+        return this.getListNode(num);
+    }
+
     /**
      * 1 2,3,4,5,6
      */
     protected ListNode getListNode1() {
-        return getListNode(new int[] { 1, 2, 3, 4, 5, 6 });
+        return getListNode(new int[]{1, 2, 3, 4, 5, 6});
     }
 
     /**
      * 6,5,4,3,2,1
      */
     protected ListNode getListNode2() {
-        return getListNode(new int[] { 6, 5, 4, 3, 2, 1 });
+        return getListNode(new int[]{6, 5, 4, 3, 2, 1});
     }
 
     /**
      * 1 2,3,4,5
      */
     protected ListNode getListNode3() {
-        return getListNode(new int[] { 1, 2, 3, 4, 5 });
+        return getListNode(new int[]{1, 2, 3, 4, 5});
     }
 
+
     /**
-     * 
      * The serialization of a binary tree follows a level order traversal, where '#' signifies a path terminator
-     * 
+     * <p>
      * where no node exists below.
-     * 
+     * <p>
      * {1,2,3,4,#,#,5} ->
-     * 
+     * <p>
      * <pre>
      *        1
      *     2     3
      *    4       5
-     * 
+     *
      * </pre>
-     * 
+     *
      * @return the root
      */
     protected TreeNode buildTree(String[] values) {
@@ -355,11 +374,10 @@ public class BaseTest {
     }
 
     /**
-     * 
      * <pre>
-     * 
+     *
      * {0,1,2#1,2#2,2} ->
-     * 
+     *
      *        1
      *       / \
      *      /   \
@@ -367,7 +385,7 @@ public class BaseTest {
      *          / \
      *          \_/
      * </pre>
-     * 
+     *
      * @param values
      */
     protected UndirectedGraphNode buildUndirectedGraphNode(String values) {
