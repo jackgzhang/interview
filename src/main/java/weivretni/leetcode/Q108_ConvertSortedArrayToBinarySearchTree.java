@@ -2,27 +2,26 @@ package weivretni.leetcode;
 
 import weivretni.TreeNode;
 
-import java.util.Arrays;
-
 /**
  * Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
- * 
+ *
  * @author gzhang
- * 
  */
 public class Q108_ConvertSortedArrayToBinarySearchTree {
 
     public TreeNode sortedArrayToBST(int[] num) {
-        if (num == null || num.length == 0) {
-            return null;
-        } else {
-            int pivot = num.length / 2;
-            TreeNode node = new TreeNode(num[pivot]);
+        return helper(num, 0, num.length - 1);
+    }
 
-            node.left = sortedArrayToBST(Arrays.copyOfRange(num, 0, pivot));
-            node.right = sortedArrayToBST(Arrays.copyOfRange(num, pivot + 1, num.length));
+    private TreeNode helper(int[] num, int start, int end) {
+        if (start > end) return null;
 
-            return node;
-        }
+        int pivot = (end + start) / 2;
+        TreeNode node = new TreeNode(num[pivot]);
+
+        node.left = helper(num, start, pivot - 1);
+        node.right = helper(num, pivot + 1, end);
+
+        return node;
     }
 }
