@@ -2,15 +2,15 @@ package weivretni.leetcode;
 
 /**
  * <pre>
- * Write an efficient algorithm that searches for a value in an m x n matrix. 
+ * Write an efficient algorithm that searches for a value in an m x n matrix.
  * This matrix has the following properties:
- * 
+ *
  * Integers in each row are sorted from left to right.
  * The first integer of each row is greater than the last integer of the previous row.
  * For example,
- * 
+ *
  * Consider the following matrix:
- * 
+ *
  * [
  *   [1,   3,  5,  7],
  *   [10, 11, 16, 20],
@@ -18,47 +18,43 @@ package weivretni.leetcode;
  * ]
  * Given target = 3, return true.
  * </pre>
- * 
- * 
- * 两次二分就好了，首先二分第一列，找出target所在的行，然后二分该行
- * 
- * 
+ * <p>
+ * 解法:
+ * O(m+n)
+ * <pre>
+ * 从左下角或右上角开始:
+ * (1) 如果target = 左下角, 返回
+ * (2) 如果target > 左下角, target 位于矩阵左下角的右边  m[0..n-1][1..m-1],
+ *     比如 target = 27
+ *
+ *   [-,  3,  5,  7],
+ *   [-, 11, 16, 20],
+ *   [-, 30, 34, 50]
+ *
+ *
+ * (3) 如果target < 左下角, target 位于矩阵左下角的上边  m[0..n-2][0..m-1]
+ *     比如 target = 16
+ *
+ *   [1,  3,  5,  7],
+ *   [10, 11, 16, 20],
+ *   [- , -,  -,  -]
+ *
+ * </pre>
  */
 public class Q074_Search2DMatrix {
 
     public boolean searchMatrix(int[][] matrix, int target) {
-        if (matrix == null) {
-            return false;
-        } else {
-            // locate row
-            int l = 0, r = matrix.length - 1;
-            while (l < r) {
-                int mid = (l + r) / 2;
-                if (matrix[mid][0] == target) {
-                    return true;
-                } else if (matrix[mid][0] < target) {
-                    l = mid + 1;
-                } else {
-                    r = mid - 1;
-                }
-            }
+        int row = matrix.length;
+        int col = matrix[0].length;
 
-            int row = l;
-            // locate column
-            l = 0;
-            r = matrix[0].length - 1;
-            while (l < r) {
-                int mid = (l + r) / 2;
-                if (matrix[row][mid] == target) {
-                    return true;
-                } else if (matrix[row][mid] < target) {
-                    l = mid + 1;
-                } else {
-                    r = mid - 1;
-                }
-            }
+        int i = row - 1;
+        int j = 0;
 
-            return false;
+        while (i >= 0 && j < col) {
+            if (matrix[i][j] == target) return true;
+            else if (matrix[i][j] > target) i--;
+            else j++;
         }
+        return false;
     }
 }
