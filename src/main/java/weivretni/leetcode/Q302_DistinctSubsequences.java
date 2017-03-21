@@ -12,12 +12,29 @@ package weivretni.leetcode;
  * Return 3.
  *
  *
- * http://www.cnblogs.com/springfor/p/3896152.html
- * 没看懂
+ * http://fisherlei.blogspot.com/2012/12/leetcode-distinct-subsequences_19.html
+ *
+ * A DP problem.
+ * [解题方法]
+ * 关键是如何得到递推关系，可以这样想，设母串的长度为 j，
+ * 子串的长度为 i，我们要求的就是长度为 i 的字串在长度为 j 的母串中出现的次数，设为 t[i][j]，
+ *
+ * (1) 若母串的最后一个字符与子串的最后一个字符不同，则长度为 i 的子串在长度为 j 的母串中出现的次数就是母串的前 j - 1 个字符中子串出现的次数，
+ *     即 t[i][j] = t[i][j - 1]，
+ *
+ * (2) 若母串的最后一个字符与子串的最后一个字符相同，那么除了前 j - 1 个字符出现字串的次数外，
+ *     还要加上子串的前 i - 1 个字符在母串的前 j - 1 个字符中出现的次数，即 t[i][j] = t[i][j - 1] + t[i - 1][j - 1]。
+ *
+ *
+ *
+ *
+ *
+ * 也可以用二维数组，这里图省事，直接用滚动数组了。
  *
  */
 public class Q302_DistinctSubsequences {
 
+    // dp
 
     public int numDistinct(String s, String t) {
         int[][] dp = new int[s.length() + 1][t.length() + 1];
@@ -36,5 +53,28 @@ public class Q302_DistinctSubsequences {
             }
         }
         return dp[s.length()][t.length()];
+    }
+
+
+    // recursive
+
+    int result = 0;
+    public int numDistinct2(String s, String t) {
+        if (s.length() < t.length()) {
+            return result;
+        }
+        if ( t.length() == 0) {
+            result ++;
+        }else {
+            int i = 0;
+            while (s.charAt(i) != t.charAt(0) && s.length() - i > t.length() ) {
+                i++;
+            }
+            if (s.charAt(i) == t.charAt(0)) {
+                numDistinct2(s.substring(i+1), t.substring(1));
+                numDistinct2(s.substring(i+1), t);
+            }
+        }
+        return result;
     }
 }

@@ -11,7 +11,9 @@ public class Q302_DistinctSubsequences_Test extends BaseTest {
     @Test
     public void test() {
         Q302_DistinctSubsequences source = new Q302_DistinctSubsequences();
-        Assert.assertEquals(3, source.numDistinct("rabbbit", "rabbit"));
+        Assert.assertEquals(source.numDistinct("rabbbit", "rabbit"), source.numDistinct2("rabbbit", "rabbit"));
 
+        source = new Q302_DistinctSubsequences();
+        Assert.assertEquals(source.numDistinct("abcde", "ace"), source.numDistinct2("abcde", "ace"));
     }
 }

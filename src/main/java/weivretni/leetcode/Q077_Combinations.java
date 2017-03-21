@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * <pre>
  * Given two integers n and k, return all possiblilties of pick k numbers out of 1 ... n.
- * 
+ *
  * For example,
  * If n = 4 and k = 2, a solution is:
- * 
+ *
  * [
  *   [2,4],
  *   [3,4],
@@ -19,22 +19,21 @@ import java.util.List;
  *   [1,4],
  * ]
  * </pre>
- * 
+ * <p>
  * 典型的DFS算法
- * 
+ * <p>
  * http://blog.csdn.net/u010500263/article/details/18435495
- * 
+ * <p>
  * <pre>
- * 
+ *
  * 注意到后排的数字大于前面的
- * 
+ *
  *                1
  *          2     3     4
  *        3  4    4
  * </pre>
- * 
+ *
  * @author gzhang
- * 
  */
 public class Q077_Combinations {
 
