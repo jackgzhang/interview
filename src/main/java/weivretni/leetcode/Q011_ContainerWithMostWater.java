@@ -2,6 +2,9 @@ package weivretni.leetcode;
 
 /**
  * <pre>
+ *
+ * 最大盛水容器.
+ *
  * Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate (i, ai). 
  * 
  * n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, 
@@ -9,13 +12,26 @@ package weivretni.leetcode;
  * which together with x-axis forms a container, such that the container contains the most water.
  * 
  * Note: You may not slant the container.
- * 
- * 典型的2指针移动问题
- * 
- * http://blog.unieagle.net/2012/09/16/leetcode%E9%A2%98%E7%9B%AE%EF%BC%9Acontainer-with-most-water/
- * 
- * http://blog.xiaohuahua.org/2014/12/31/leetcode-container-with-most-water/
- * 
+ *
+ * For Example:  We have [1,2,4,5], the answer is 4.   [1,2,4,5,3], the answer is 6
+ *
+ *           |                       |
+ *        |  |                    |  |
+ *        |  |                    |  |  |
+ *     |  |  |                 |  |  |  |
+ *  |  |  |  |              |  |  |  |  |
+ *  ------------           ---------------
+ *  1  2  3  4              1  2  3  4  5
+ *
+ *  [1,4]x1 = 4             [1,5]x1 = 5
+ *  [2,4]x2 = 4             [2,5]x2 = 6
+ *  [3,4]x4 = 4             [3,4]x1 = 4
+ *                          [3,5]x3 = 6
+ *
+ *
+ *
+ * @see Q042_TrappingRainWater
+ *
  * </pre>
  *
  */
