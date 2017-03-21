@@ -7,30 +7,22 @@ import weivretni.TreeNode;
 
 public class Q011_BinaryTreeInOrderTranversal_Test extends BaseTest {
 
-    private Q011_BinaryTreeInOrderTranversal source = new Q011_BinaryTreeInOrderTranversal();
+    private Q011_BinaryTreeInOrderTraversal source1 = new Q011_BinaryTreeInOrderTraversal();
+    private Q011_BinaryTreeInOrderTraversal source2 = new Q011_BinaryTreeInOrderTraversal();
 
     @Test
     public void test() {
         /**
          * <pre>
          *      3
-         *   2      5
-         * 1     4     6
+         *    /   \
+         *   2     5
+         *  /     / \
+         * 1     4   6
          * </pre>
          */
-        TreeNode root = new TreeNode(3);
-        TreeNode left2 = new TreeNode(2);
-        TreeNode left1 = new TreeNode(1);
-        TreeNode left4 = new TreeNode(4);
-        TreeNode right5 = new TreeNode(5);
-        TreeNode right6 = new TreeNode(6);
+        TreeNode root = super.buildTree(new String[]{"3","2","5","1","#","4","6"});
 
-        root.left = left2;
-        root.right = right5;
-        left2.left = left1;
-        right5.right = right6;
-        right5.left = left4;
-
-        this.assertEquals(new int[] { 1, 2, 3, 4, 5, 6 }, source.inorderTraversal(root));
+        this.assertEquals(source1.inOrderTraversal_1(root), source2.inOrderTraversal_2(root));
     }
 }
