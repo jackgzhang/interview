@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class Q017_LetterCombinationsofaPhoneNumber_Test {
 
-    private Q017_LetterCombinationsofaPhoneNumber source = new Q017_LetterCombinationsofaPhoneNumber();
+    private Q017_LetterCombinationsOfaPhoneNumber source = new Q017_LetterCombinationsOfaPhoneNumber();
 
     @Test
     public void test() {

@@ -1,7 +1,7 @@
 package weivretni.leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,16 +28,16 @@ import java.util.List;
  * </pre>
  * 
  */
-public class Q017_LetterCombinationsofaPhoneNumber {
+public class Q017_LetterCombinationsOfaPhoneNumber {
 
     private String[] map = new String[] { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
 
     public List<String> letterCombinations(String digits) {
         if (digits.length() == 0) {
-            return Arrays.asList(new String[] { "" });
+            return Collections.singletonList("");
         } else {
             List<String> currResult = letterCombinations(digits.substring(1));
-            List<String> result = new ArrayList<String>();
+            List<String> result = new ArrayList<>();
             String currPrefix = map[digits.charAt(0) - '0'];
             for (String str : currResult) {
                 for (char c : currPrefix.toCharArray()) {

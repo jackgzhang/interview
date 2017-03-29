@@ -9,6 +9,9 @@ public class Q016_ThreeSumClosest_Test {
 
     @Test
     public void test() {
+
+        // -4 , -1,1,2  => 1
+
         Assert.assertSame(2, source.threeSumClosest(new int[] { -1, 2, 1, -4 }, 1));
         Assert.assertSame(3, source.threeSumClosest(new int[] { 1, 1, 1, 1 }, 3));
         Assert.assertSame(3, source.threeSumClosest(new int[] { 0, 1, 2 }, 3));
