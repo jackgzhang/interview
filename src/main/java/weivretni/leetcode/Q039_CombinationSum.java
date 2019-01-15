@@ -20,43 +20,32 @@ import java.util.List;
  * [2, 2, 3]
  * </pre>
  * 
- * @param num
- * @param target
- * @return
  */
 public class Q039_CombinationSum {
 
-    List<List<Integer>> result = new ArrayList<List<Integer>>();
-
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
 
-        result = new ArrayList<List<Integer>>();
+        List<List<Integer>> result = new ArrayList<>();
 
         if (candidates == null || candidates.length == 0 || target <= 0) {
             return result;
         } else {
             Arrays.sort(candidates);
 
-            helper(candidates, new ArrayList<Integer>(), 0, target);
-
+            dfs(candidates, new ArrayList<>(), result, 0, target);
             return result;
         }
     }
 
-    private void helper(int[] candidates, List<Integer> current, int currIndex, int target) {
+    private void dfs(int[] candidates, List<Integer> current, List<List<Integer>> result, int currIndex, int target) {
         if (target == 0) {
-            result.add(new ArrayList<Integer>(current));
+            result.add(new ArrayList<>(current));
         } else {
             for (int i = currIndex; i < candidates.length; i++) {
 
-                // Skip duplicates
-                if (i > 0 && candidates[i] == candidates[i - 1]) {
-                    continue;
-                }
-
                 if (candidates[i] <= target) {
                     current.add(candidates[i]);
-                    helper(candidates, current, i, target - candidates[i]);
+                    dfs(candidates, current, result , i, target - candidates[i]);
                     current.remove(current.size() - 1);
                 }
             }

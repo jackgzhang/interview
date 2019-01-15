@@ -1,6 +1,7 @@
 package weivretni.leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -78,15 +79,9 @@ public class Q001_ThreeSum {
 
                 if (currSum == 0) {
                     // found it
-                    List<Integer> tuple = new ArrayList<>();
-                    tuple.add(num[left]);
-                    tuple.add(num[i]);
-                    tuple.add(num[right]);
-
-                    result.add(tuple);
-
-                    // Move to the next, it could either direction  // <-- 非常重要, 不然会无限循环
+                    result.add(Arrays.asList(num[left],num[i],num[right]));
                     left--;
+                    right++;
                 } else if (currSum < 0) {
                     right++;
                 } else {

@@ -10,5 +10,7 @@ public class Q121_BestTimeToBuySellStock_Test {
     @Test
     public void test() {
         Assert.assertEquals(5,source.maxProfit(new int[]{5,4,9,4,1,3}));
+        Assert.assertEquals(3,source.maxProfit(new int[]{7,6,2,5,4,3}));
+
     }
 }

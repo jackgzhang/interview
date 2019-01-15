@@ -1,4 +1,10 @@
+========== Array相关 ========
+https://www.zybuluo.com/Yano/note/250681
 
+Two Sum
+3 Sum
+3Sum Closest
+4Sum
 
 ========== 两指针相关 ========
 Q001_ThreeSum

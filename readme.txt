@@ -6,3 +6,6 @@ http://www.mitbbs.com/mitbbs_article.php?board=JobHunting&id=31505215&ftype=3&di
 CareerCup 150
 Lulu
 Dynamic Programming: http://people.csail.mit.edu/bdean/6.046/dp/
+
+
+https://www.jianshu.com/p/4eaef0a352d3
