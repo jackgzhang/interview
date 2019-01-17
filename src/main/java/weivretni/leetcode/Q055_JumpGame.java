@@ -30,27 +30,18 @@ package weivretni.leetcode;
 public class Q055_JumpGame {
 
     public boolean canJump(int[] A) {
-        if (A == null || A.length <= 1) {
-            return true;
-        }
+        int max = 0;
 
-        int canReach = 0;
-
-        int i;
-        for (i = 0; i < A.length; i++) {
-            if (canReach >= A.length - 1)
-                return true;
-
-            if (i <= canReach) {
-
-                if (A[i] + i > canReach) {
-                    canReach = A[i] + i;
-                }
-
+        int i = 0;
+        while (i <= max && max < A.length) {
+            int soFar = A[i] + i;
+            if (soFar > max) {
+                max = soFar;
             }
-
+            i++;
         }
-        return false;
+
+        return max >= A.length;
     }
 
 }

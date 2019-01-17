@@ -26,32 +26,20 @@ package weivretni.leetcode;
 public class Q036_FindMinimuminRotatedSortedArray {
 
     public int findMin(int[] num) {
-        if (num == null || num.length == 0) {
-            return 0;
-        }
+        int left = 0;
+        int right = num.length - 1;
 
-        if (num.length == 1) {
-            return num[0];
-        }
+        while (left < right) {
+            int mid = left + (right - left) / 2;
 
-        int l = 0;
-        int r = num.length - 1;
-        while (l <= r) {
-            int pivot = (l + r) / 2;
-            if (pivot >= 1 && num[pivot - 1] > num[pivot]) {
-                return num[pivot];
-            } else {
-                if (num[pivot] < num[r]) {
-                    // search left
-                    r = pivot - 1;
-                }else{
-                    l = pivot + 1;
-                }
+            if (num[mid] < num[right]) {
+                right = mid;
+            }else{
+                left = mid + 1;
             }
         }
 
-        // Cannot find it 
-        return num[0];
+        return left;
     }
 
 }

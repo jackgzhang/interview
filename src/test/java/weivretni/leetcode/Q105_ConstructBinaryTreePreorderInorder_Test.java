@@ -12,6 +12,10 @@ public class Q105_ConstructBinaryTreePreorderInorder_Test {
 
         TreeNode answers = null;
 
+        answers = source.buildTree(new int[] { 1, 2, 4, 3, 5, 6 }, new int[] { 4,2,1,5,3,6 });
+
+        System.out.println(answers);
+
         answers = source.buildTree(new int[] { 1, 2, 3 }, new int[] { 2, 1, 3 });
 
         System.out.println(answers);
@@ -19,6 +23,8 @@ public class Q105_ConstructBinaryTreePreorderInorder_Test {
         answers = source.buildTree(new int[] { 1, 2, 4, 6, 7, 5, 3 }, new int[] { 6, 4, 7, 2, 5, 1, 3 });
 
         System.out.println(answers);
+
+
 
     }
 }
