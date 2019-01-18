@@ -1,42 +1,23 @@
 package weivretni.leetcode;
 
 /**
- * Find the contiguous subarray within an array (containing at least one number)
- * <p>
- * which has the largest product.
- * <p>
- * For example, given the array [2,3,-2,4], the contiguous subarray [2,3] has the
- * <p>
- * largest product = 6.
- * <p>
- * <pre>
+ * Maximum Product Subarray
+ * Find the contiguous subarray within an array (containing at least one number) which has the largest product.
  *
- * DP 会超时
- * http://shepherdyuan.wordpress.com/2014/07/23/linkedin-maximum-sumproduct-subarray/
- * 跟Gas Station的想法几乎一模一样
+ * For example, given the array [2,3,-2,4],
+ * the contiguous subarray [2,3] has the largest product = 6.
  *
+ * 参考：LeetCode 152 Maximum Product Subarray
  *
- * http://bookshadow.com/weblog/2014/10/15/leetcode-maximum-product-subarray/
- * 简单动态规划：
+ * LeetCode第53题Maximum Subarray是求连续和最大的子数组，本题是求连续乘积最大的子数组。
  *
- * 用数组positive_max[i]维护原始数组前i个数的子数组乘积中正数的最大值
- * 用数组negative_min[i]维护原始数组前i个数的子数组乘积中负数的最小值
- * 状态转移方程为：
+ * 在解法上是一样的，只是在求和时，是负就舍弃。但是在乘积中，因为负数*负数=正数，所以连续乘积为负数时，并不能舍弃这个数，因为如果数组的元素是负数，它可能成为乘积最大的数。
  *
- * Let us denote that:
- *
- * f(k) = Largest product subarray, from index 0 up to k.
- * Similarly,
- *
- * g(k) = Smallest product subarray, from index 0 up to k.
- * Then,
- *
- * f(k) = max( f(k-1) * A[k], A[k], g(k-1) * A[k] )
- * g(k) = min( g(k-1) * A[k], A[k], f(k-1) * A[k] )
- *
- *
- * </pre>
+ * 所以LeetCode第53题Maximum Subarray，只需要定义一个变量，用来记录和；本题要定义两个变量：
+ * positive和negative，分别记录当前乘积最大值和最小值。
  */
+
+
 public class Q152_MaximumProductSubarray {
 
     public int maxProduct(int[] A) {
