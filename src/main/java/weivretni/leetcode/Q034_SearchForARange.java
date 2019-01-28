@@ -16,35 +16,27 @@ public class Q034_SearchForARange {
 
     public int[] searchRange(int[] A, int target) {
         int l = 0;
-        int r = A.length - 1;
-        int[] result = new int[2];
-        result[0] = -1;
-        result[1] = -1;
+        int r = A.length ;
+        int[] result = new int[]{-1,-1};
 
-        while (l <= r) {
-            int pivot = (l + r) / 2;
-            if (A[pivot] == target) {
-                // Now search left and right
-                l = pivot;
-                r = pivot;
-                while (l >= 1 && A[l - 1] == target) {
-                    l--;
-                }
-                while (r <= A.length - 2 && A[r + 1] == target) {
-                    r++;
-                }
+        while (l < r) {
+           int m = (l + r) / 2;
 
-                result[0] = l;
-                result[1] = r;
-                break;
-            } else {
-                if (A[pivot] < target) {
-                    // search right
-                    l = pivot + 1;
-                } else {
-                    r = pivot - 1;
-                }
-            }
+           if (A[m] == target) {
+               l = m;
+               r = m;
+               while (l > 0 && A[l-1] == target) {
+                   l--;
+               }
+               while (r < A.length-1 && A[r+1] == target) {
+                   r++;
+               }
+               return new int[]{l ,r};
+           }else if (A[m] < target) {
+               l = m + 1;
+           }else{
+               r = m;
+           }
         }
 
         return result;

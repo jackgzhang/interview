@@ -19,7 +19,7 @@ package weivretni.leetcode;
  * Given target = 3, return true.
  * </pre>
  * <p>
- * 解法:
+ * 解法-:
  * O(m+n)
  * <pre>
  * 从左下角或右上角开始:
@@ -39,6 +39,9 @@ package weivretni.leetcode;
  *   [10, 11, 16, 20],
  *   [- , -,  -,  -]
  *
+ * 解法=:
+ * O(log(m+n))
+ * Convert corrdinate (x,y) into array index and use binary search
  * </pre>
  */
 public class Q074_Search2DMatrix {
@@ -55,6 +58,32 @@ public class Q074_Search2DMatrix {
             else if (matrix[i][j] > target) i--;
             else j++;
         }
+        return false;
+    }
+
+    public boolean binarySearch(int[][] A, int target) {
+
+        int mx = A.length;
+        int my = A[0].length;
+
+        int l = 0;
+        int r = mx * my;
+
+        while (l < r) {
+            int m = (l + r) / 2;
+
+            int row = m / my;
+            int column = m % my;
+
+            if (A[row][column] == target) {
+                return true;
+            }else if (A[row][column] < target) {
+                l = m + 1;
+            }else {
+                r = m;
+            }
+        }
+
         return false;
     }
 }

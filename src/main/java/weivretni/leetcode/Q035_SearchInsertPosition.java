@@ -39,6 +39,7 @@ public class Q035_SearchInsertPosition {
         }
 
         return A[left] < target ? left + 1: left;
+
     }
 
 }

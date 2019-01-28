@@ -21,27 +21,21 @@ package weivretni.leetcode;
  */
 public class Q026_RemoveDuplicatesfromSortedArray {
 
-    public int removeDuplicates(int[] A) {
-        if (A == null || A.length <= 1) {
-            return A.length;
-        } else {
-            int dup = 0;
+    public int removeDuplicates(int[] nums) {
 
-            int curr = 1;
-            int pre = 1;
-            while (curr < A.length) {
-                if (A[curr] == A[curr - 1]) {
-                    curr++;
-                    dup++;
-                } else {
-                    A[pre] = A[curr];
-                    pre++;
-                    curr++;
-                }
-            }
-
-            return A.length - dup;
-
+        if (nums == null) {
+            return -1;
         }
+        if (nums.length < 2) {
+            return nums.length;
+        }
+        int len = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[len] != nums[i]) {
+                nums[++len] = nums[i];
+            }
+        }
+        return len + 1;
+
     }
 }
