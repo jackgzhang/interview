@@ -10,13 +10,13 @@ public class SortedListToTree_Test {
 
     @Test
     public void test() {
-
-        ListNode node4 = new ListNode(4);
-        ListNode node3 = new ListNode(3, node4);
-        ListNode node2 = new ListNode(2, node3);
-        ListNode node1 = new ListNode(1, node2);
-
-        TreeNode root = source.sortedListToBST(node1);
+        TreeNode root = source.sortedListToBST(new ListNode(new int[]{1,2}));
+        System.out.println(root);
+        root = source.sortedListToBST(new ListNode(new int[]{1,2,3,4,5}));
+        System.out.println(root);
+        root = source.sortedListToBST(new ListNode(new int[]{1,2,3,4,5,6}));
+        System.out.println(root);
+        root = source.sortedListToBST(new ListNode(new int[]{1,2,3,4,5,6,7}));
         System.out.println(root);
     }
 }

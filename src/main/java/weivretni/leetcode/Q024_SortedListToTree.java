@@ -27,34 +27,36 @@ import weivretni.TreeNode;
 public class Q024_SortedListToTree {
 
     public TreeNode sortedListToBST(ListNode head) {
-        ListNode node2 = head;
 
-        int length = 1;
-        while (node2.next != null) {
-            node2 = node2.next;
-            length++;
-        }
-
-        return buildBST(head, 0, length - 1);
-    }
-
-    private TreeNode buildBST(ListNode head, int start, int end) {
-        if (start > end) {
+        if (head == null) {
             return null;
         }
-
-        int mid = (end + start) / 2;
-
-        ListNode p = head;
-        for (int i = 0; i < mid; i++) {
-            p = p.next;
+        if (head.next == null) {
+            return new TreeNode(head.val);
         }
-        TreeNode parent = new TreeNode(p.val);
 
-        parent.left = buildBST(head, start, mid - 1);
-        parent.right = buildBST(head, mid + 1, end);
+        ListNode middle = cutMiddle(head);
 
-        return parent;
+        TreeNode root = new TreeNode(middle.val);
+        root.left = sortedListToBST(head);
+        root.right = sortedListToBST(middle.next);
+
+        return root;
+
+    }
+
+    private ListNode cutMiddle(ListNode head) {
+        ListNode pslow = head;
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            pslow = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        pslow.next = null;
+        return slow;
     }
 
 }

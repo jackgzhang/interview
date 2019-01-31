@@ -37,22 +37,25 @@ package weivretni.leetcode;
 public class Q063_UniquePath2 {
 
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        int row = obstacleGrid.length + 1;
-        int column = obstacleGrid[0].length + 1;
-        int dp[][] = new int[row][column];
+        int row = obstacleGrid.length;
+        int column = obstacleGrid[0].length;
+        int[][] dp = new int[row][column];
 
-        dp[row-2][column-1] = 1;
 
-        for (int i = row - 2; i >= 0; i--) {
-            for (int j = column - 2; j >= 0; j--) {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
                 if (obstacleGrid[i][j] == 1) {
                     dp[i][j] = 0;
                 } else {
-                    dp[i][j] = dp[i + 1][j] + dp[i][j + 1];
+                    if (i == 0 || j == 0) {
+                        dp[i][j] = 1;
+                    }else {
+                        dp[i][j] = dp[i -1][j] + dp[i][j - 1];
+                    }
                 }
             }
         }
 
-        return dp[0][0];
+        return dp[row - 1][column - 1];
     }
 }

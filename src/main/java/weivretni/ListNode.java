@@ -11,14 +11,20 @@ public class ListNode {
 
     }
 
+    public ListNode(int... x) {
+        this.val = x[0];
+        if (x.length > 1) {
+            ListNode p = this;
+            for (int i = 1; i< x.length; i++) {
+                p.next = new ListNode(x[i]);
+                p = p.next;
+            }
+        }
+    }
+
     public ListNode(int x) {
         val = x;
         next = null;
-    }
-
-    public ListNode(int x, ListNode next) {
-        val = x;
-        this.next = next;
     }
 
     public String toString() {

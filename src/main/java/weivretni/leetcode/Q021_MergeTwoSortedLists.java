@@ -16,32 +16,30 @@ import weivretni.ListNode;
 public class Q021_MergeTwoSortedLists {
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode p0 = new ListNode();
-        ListNode pCurrent = p0;
-
+        ListNode head = new ListNode(0);
+        ListNode p = head;
         while (l1 != null || l2 != null) {
-            if (l1 != null && l2 != null) {
+            if (l1 != null && l2 !=null) {
                 if (l1.val < l2.val) {
-                    pCurrent.next = l1;
+                    p.next = l1;
                     l1 = l1.next;
-                    pCurrent = pCurrent.next;
-                } else {
-                    pCurrent.next = l2;
+                    p = p.next;
+                }else{
+                    p.next = l2;
                     l2 = l2.next;
-                    pCurrent = pCurrent.next;
+                    p = p.next;
                 }
-            } else if (l1 != null) {
-                pCurrent.next = l1;
-                l1 = l1.next;
-                pCurrent = pCurrent.next;
-            } else {
-                pCurrent.next = l2;
-                l2 = l2.next;
-                pCurrent = pCurrent.next;
+            }else {
+                if (l1 != null) {
+                    p.next = l1;
+                    break;
+                } else {
+                    p.next = l2;
+                    break;
+                }
             }
         }
 
-        return p0.next;
-
+        return head.next;
     }
 }

@@ -22,59 +22,31 @@ public class Q002_Add2Numbers {
         ListNode p1 = l1;
         ListNode p2 = l2;
 
-        ListNode result = null;
-        ListNode resultHead = null;      // <------- Return the head of the result
-        
-        int carriage = 0;
-        while (p1 != null && p2 != null) {
+        ListNode r = new ListNode();
+        ListNode head = r;
+        int carry = 0;
 
-            int value = p1.val + p2.val + carriage;
-            if (value >= 10) {
-                value = value - 10;
-                carriage = 1;
-            }else{
-                carriage = 0;
-            }
-            ListNode aNewNode = new ListNode(value);
-
-            if (result == null) {
-                result = aNewNode;
-                resultHead = result;
-            } else {
-                result.next = aNewNode;
-                result = result.next;
+        while (p1 != null || p2 != null || carry != 0) {
+            int val1 = 0;
+            if (p1 != null) {
+                val1 = p1.val;
+                p1 = p1.next;
             }
 
-            p1 = p1.next;
-            p2 = p2.next;
+            int val2 = 0;
+            if (p2 != null) {
+                val2 = p2.val;
+                p2 = p2.next;
+            }
+
+            int result = val1 + val2 + carry;
+            carry = result / 10;
+            ListNode node = new ListNode(result % 10);
+            r.next = node;
+            r = r.next;
         }
 
-        ListNode remainngNode = (p1 == null) ? p2 : p1;
-        while (remainngNode != null) {
-            int value = remainngNode.val + carriage;
-            if (value >= 10) {
-                value = value - 10;
-                carriage = 1;
-            }else{
-                carriage = 0;
-            }
-            ListNode aNewNode = new ListNode(value);
-            if (result == null) {
-                result = aNewNode;
-                resultHead = result;
-            } else {
-                result.next = aNewNode;
-                result = result.next;
-            }
-            
-            remainngNode = remainngNode.next;     // <------ forward the remainning
-        }
+        return head.next;
 
-        if (carriage > 0) {
-            ListNode aNewNode = new ListNode(carriage);
-            result.next = aNewNode;
-        }
-
-        return resultHead;
     }
 }

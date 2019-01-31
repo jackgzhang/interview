@@ -2,6 +2,7 @@ package weivretni.leetcode;
 
 import org.junit.Test;
 import weivretni.BaseTest;
+import weivretni.ListNode;
 
 public class Q021_MergeTwoSortedLists_Test extends BaseTest {
 
@@ -9,8 +10,9 @@ public class Q021_MergeTwoSortedLists_Test extends BaseTest {
 
     @Test
     public void test() {
-        System.out.println(source.mergeTwoLists(this.getListNode(new int[] { 1 }), getListNode(new int[] {})));
-        System.out.println(source.mergeTwoLists(this.getListNode(new int[] {}), getListNode(new int[] { 0 })));
-        System.out.println(source.mergeTwoLists(this.getListNode(new int[] { 1, 3, 5 }), getListNode(new int[] { 2, 4, 6, 8 })));
+        assertEquals(new ListNode(1,2), source.mergeTwoLists(new ListNode(1), new ListNode(2)));
+        assertEquals(new ListNode(1,2,3,4), source.mergeTwoLists(new ListNode(1,4), new ListNode(2,3)));
+        assertEquals(new ListNode(1,2,3,4,5,6), source.mergeTwoLists(new ListNode(1,4,5), new ListNode(2,3,6)));
+
     }
 }

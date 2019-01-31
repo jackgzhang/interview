@@ -2,6 +2,7 @@ package weivretni.leetcode;
 
 import org.junit.Test;
 import weivretni.BaseTest;
+import weivretni.ListNode;
 
 public class Q147_InsertionSortList_Test extends BaseTest {
 
@@ -9,8 +10,8 @@ public class Q147_InsertionSortList_Test extends BaseTest {
 
     @Test
     public void test() {
-        System.out.println(source.insertionSortList(this.getListNode(new int[] { -2147483647, Integer.MIN_VALUE })));
-        System.out.println(source.insertionSortList(this.getListNode(new int[] { 1, 2, 3, 4, 6, 5 })));
-        System.out.println(source.insertionSortList(this.getListNode(new int[] { 6, 5 })));
+        assertEquals(new ListNode(new int[]{1,2,3}), source.insertionSortList(new ListNode((new int[] { 3,1,2 }))));
+        assertEquals(new ListNode(new int[]{1,2}), source.insertionSortList(new ListNode((new int[] { 1,2 }))));
+        assertEquals(new ListNode(new int[]{1,2,3,4}), source.insertionSortList(new ListNode((new int[] { 1,2,4,3 }))));
     }
 }

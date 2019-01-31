@@ -2,6 +2,7 @@ package weivretni.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,27 +35,23 @@ import java.util.List;
 public class Q078_Subsets {
 
     public List<List<Integer>> subsets(int[] S) {
-        Arrays.sort(S);
-        return helper(S);
-    }
+        List<List<Integer>> result = new ArrayList<>();
 
-    private List<List<Integer>> helper(int[] s) {
-
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-
-        if (s == null || s.length == 0) {
-            result.add(new ArrayList());
-            return result;
-        } else {
-            List<List<Integer>> tmpResult = helper(Arrays.copyOf(s, s.length - 1));
-
-            for (List<Integer> atmpResult : tmpResult) {
-                result.add(new ArrayList(atmpResult));
-                atmpResult.add(s[s.length - 1]);
-                result.add(new ArrayList(atmpResult));
+        for (int s : S) {
+            List<List<Integer>> result2 = new ArrayList<>();
+            for (List<Integer> existing: result) {
+                List<Integer> n = new ArrayList<>(existing);
+                n.add(s);
+                result2.add(n);
             }
 
-            return result;
+            if (result2.size() > 0 ) {
+                result.addAll(result2);
+            }
+            result.add(Collections.singletonList(s));
         }
+
+        return result;
     }
+
 }

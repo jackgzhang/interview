@@ -54,7 +54,7 @@ public class Q160_IntersectionOfTwoLinkedLists {
             }
 
             // Now start at the same time
-            while (longHead != shortHead && longHead.val != shortHead.val) {
+            while (longHead.val != shortHead.val) {
                 longHead = longHead.next;
                 shortHead = shortHead.next;
             }
